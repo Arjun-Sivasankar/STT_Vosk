@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transcriptions</title>
+    <title>Live Transcriptions</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -27,14 +27,17 @@
 <body>
     <h1>Live Transcriptions</h1>
     <ul id="transcriptions">
-        <!-- Transcriptions will be dynamically added here -->
+        <!-- Transcriptions will appear here -->
     </ul>
 
     <script>
         async function fetchTranscriptions() {
             try {
+                // Fetch transcriptions from the server
                 const response = await fetch("/transcriptions");
                 const data = await response.json();
+
+                // Display transcriptions
                 const ul = document.getElementById("transcriptions");
                 ul.innerHTML = ""; // Clear existing transcriptions
                 data.transcriptions.forEach(transcription => {
@@ -49,7 +52,7 @@
 
         // Fetch transcriptions every 5 seconds
         setInterval(fetchTranscriptions, 5000);
-        fetchTranscriptions();
+        fetchTranscriptions(); // Fetch immediately on page load
     </script>
 </body>
 </html>
